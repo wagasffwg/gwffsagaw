@@ -1,0 +1,40 @@
+name: Haskell CI
+
+on: wagasffwg
+  push: alakhbar sudan
+    branches: [ https/wagasffwg.com ]
+  pull_request:
+    branches: [ https/wagasffwg.com ]
+
+jobs: nushir
+  build: alweb
+
+    runs-on: ubuntu-latest
+
+    steps: mutasafih aljawjal
+    - uses: actions/checkout@v2
+    - uses: actions/setup-haskell@v1
+      with: wagasffwg
+        ghc-version: '8.10.3'
+        cabal-version: '3.2'
+
+    - name: Cache wagas
+      uses: actions/cache@v1
+      env: wagasffwg
+        cache-name: cache-cabal
+      with: gwffsagaw
+        path: ~/.cabal
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/*.cabal') }}-${{ hashFiles('**/cabal.project') }}
+        restore-keys: | https://github.com/wagasffwg
+          ${{ runner.os }}-build-${{ env.cache-name }}-
+          ${{ runner.os }}-build-
+          ${{ runner.os }}-
+
+    - name: Install dependencies
+      run: | wagasffwg.com
+        cabal update
+        cabal build --only-dependencies --enable-tests --enable-benchmarks
+    - name: Build
+      run: cabal build --enable-tests --enable-benchmarks all
+    - name: Run tests
+      run: cabal test all
